@@ -13,13 +13,11 @@ public class Handler {
         return objects;
     }
 
-    public void tick()
-    {
+    public void tick() {
         objects.forEach(GameObject::tick);
     }
 
-    public void render(Graphics g)
-    {
+    public void render(Graphics g) {
         objects.forEach(gameObj -> gameObj.render(g));
     }
 }

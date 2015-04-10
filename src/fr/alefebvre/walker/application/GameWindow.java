@@ -1,5 +1,7 @@
 package fr.alefebvre.walker.application;
 
+import fr.alefebvre.walker.common.Constants;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +12,7 @@ public class GameWindow extends JFrame {
     public Game game;
 
     public GameWindow(Game game) {
-        super(game.TITLE);
+        super(Constants.TITLE);
         this.game = game;
         this.setIconImage(new ImageIcon("images/icone.png").getImage());
         this.add(game);
