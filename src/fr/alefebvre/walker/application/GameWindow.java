@@ -14,7 +14,7 @@ public class GameWindow extends JFrame {
     public GameWindow(Game game) {
         super(Constants.TITLE);
         this.game = game;
-        this.setIconImage(new ImageIcon("images/icone.png").getImage());
+        this.setIconImage(new ImageIcon("resources/images/icone.png").getImage());
         this.add(game);
         JMenuItem menuItemNew = new JMenuItem("Nouvelle partie");
         menuItemNew.addActionListener(new GameListener(this));
