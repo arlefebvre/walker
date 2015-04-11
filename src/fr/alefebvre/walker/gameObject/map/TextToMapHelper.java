@@ -18,8 +18,6 @@ public abstract class TextToMapHelper {
             while ((line = bReader.readLine()) != null) {
                 tiles.add(mapLine(line));
             }
-            // Stream<ArrayList<TileObject>> listStream = bReader.lines().map(line -> mapLine(line)).;
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -28,8 +26,6 @@ public abstract class TextToMapHelper {
 
     private static ArrayList<TileObject> mapLine(String line) {
         String[] strings = line.split(SEPARATOR);
-        //Stream<TileObject> stream = Arrays.stream(strings).map(s -> mapTile(s));
-        //return stream.toArray();
         ArrayList<TileObject> tiles = new ArrayList<>();
         for (String string : strings) {
             tiles.add(mapTile(string));

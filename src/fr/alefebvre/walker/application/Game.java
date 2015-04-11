@@ -18,7 +18,7 @@ public class Game extends Canvas implements Runnable {
     private Handler gameHandler;
 
     public Game() {
-        this.setPreferredSize(new Dimension(Constants.SCALEDWIDTH, Constants.SCALEDHEIGHT));
+        this.setPreferredSize(new Dimension(Constants.WIDTH, Constants.HEIGHT));
 
         gameHandler = new Handler();
         this.addKeyListener(new KeyInput(gameHandler));
@@ -28,10 +28,7 @@ public class Game extends Canvas implements Runnable {
     public void initialize() {
         gameHandler.getObjects().clear();
         gameHandler.getObjects().add(new TilesMap(0, 0));
-        //gameHandler.getObjects().add(new BackgroundMap(0, 0, "resources/images/map.png"));
         gameHandler.getObjects().add(new Player(WIDTH, HEIGHT, 0, 0));
-        //  gameHandler.addGameObject(new Enemy(WIDTH, HEIGHT, 0, 0));
-        // gameHandler.addGameObject(new Menu(SCALEDWIDTH / 2 - 50, SCALEDHEIGHT / 2 - 150));
     }
 
     public synchronized void start() {
@@ -97,7 +94,7 @@ public class Game extends Canvas implements Runnable {
         }
         Graphics g = bs.getDrawGraphics();
         g.setColor(Color.BLACK);
-        g.fillRect(0, 0, Constants.WIDTH * Constants.SCALE, Constants.HEIGHT * Constants.SCALE);
+        g.fillRect(0, 0, Constants.WIDTH, Constants.HEIGHT);
         this.gameHandler.render(g);
         g.dispose();
         bs.show();

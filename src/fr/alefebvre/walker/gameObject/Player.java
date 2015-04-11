@@ -22,14 +22,12 @@ public class Player extends GameObject {
         x += velX;
         y += velY;
 
-        x = Helper.Clamp(x, 0, Constants.SCALEDWIDTH - 30);
-        y = Helper.Clamp(y, 0, Constants.SCALEDHEIGHT - 30);
+        x = Helper.Clamp(x, 0, Constants.WIDTH - 30);
+        y = Helper.Clamp(y, 0, Constants.HEIGHT - 30);
     }
 
     @Override
     public void render(Graphics g) {
-        //g.setColor(Color.BLACK);
-        //g.fillOval(x, y, 25, 25);
         ImageIcon icon = new ImageIcon(Constants.PLAYER_IMG);
         Image myImage = icon.getImage();
         g.drawImage(myImage, x, y, null);

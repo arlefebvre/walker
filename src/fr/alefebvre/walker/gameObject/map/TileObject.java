@@ -1,5 +1,7 @@
 package fr.alefebvre.walker.gameObject.map;
 
+import fr.alefebvre.walker.common.Constants;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -11,13 +13,13 @@ public class TileObject {
         String path;
         switch (type) {
             case GRASS:
-                path = "resources/images/grass.png";
+                path = Constants.TILE_GRASS_IMG;
                 break;
             case TREE:
-                path = "resources/images/tree.png";
+                path = Constants.TILE_TREE_IMG;
                 break;
             default:
-                path = "resources/images/pokemon.gif";
+                path = Constants.TILE_UNKNOWN_IMG;
                 break;
         }
         ImageIcon icon = new ImageIcon(path);

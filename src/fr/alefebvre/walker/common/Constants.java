@@ -1,23 +1,24 @@
 package fr.alefebvre.walker.common;
 
-// TODO a gérer sous une autre forme?
 public abstract class Constants {
 
-    public final static String IMAGES_PATH = "resources/images/";
-    public final static String MAPS_PATH = "resources/maps/";
+    //RENDER
+    public static final int WIDTH = 640;
+    public static final int HEIGHT = 480;
+    public static final int TILE_SIZE = 32;
+    public static final String TITLE = "Walker";
+    public static final int MAX_MAP_ROWS = 15;
+    public static final int MAX_MAP_COLUMNS = 20;
 
-    public final static String PLAYER_IMG = IMAGES_PATH + "pokemon.gif";
+    //IMAGES
 
-    public static final int WIDTH = 320;
-    public static final int HEIGHT = WIDTH / 12 * 9;
-    public static final int SCALE = 2;
-    public static final int SCALEDWIDTH = WIDTH * SCALE;
-    public static final int SCALEDHEIGHT = HEIGHT * SCALE;
-    public final static int TILESIZE = 32;
-    public final static String TITLE = "Walker";
+    public final static String PLAYER_IMG = "resources/images/pokemon.gif";
+    public static final String FAVICON = "resources/images/icone.png";
+    public static final String TILE_GRASS_IMG = "resources/images/tile_grass.png";
+    public static final String TILE_UNKNOWN_IMG = "resources/images/tile_unknown.png";
+    public static final String TILE_TREE_IMG = "resources/images/tile_tree.png";
+    //MAPS
+    public static final String TEST_MAP_PATH = "resources/maps/map.txt";
 
-    public static final String TEST_MAP_PATH = MAPS_PATH + "map.txt";
-
-    public final static int MAX_MAP_ROWS = 5;
-    public final static int MAX_MAP_COLUMNS = 12;
+    public static final boolean SHOW_TILES_BORDER = false;
 }
