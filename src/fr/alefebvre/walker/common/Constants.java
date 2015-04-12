@@ -11,12 +11,12 @@ public abstract class Constants {
     public static final int MAX_MAP_COLUMNS = 20;
 
     //IMAGES
-
     public final static String PLAYER_IMG = "resources/images/pokemon.gif";
     public static final String FAVICON = "resources/images/icone.png";
     public static final String TILE_GRASS_IMG = "resources/images/tile_grass.png";
     public static final String TILE_UNKNOWN_IMG = "resources/images/tile_unknown.png";
     public static final String TILE_TREE_IMG = "resources/images/tile_tree.png";
+
     //MAPS
     public static final String TEST_MAP_PATH = "resources/maps/map.txt";
 

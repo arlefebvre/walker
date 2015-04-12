@@ -7,28 +7,26 @@ import fr.alefebvre.walker.gameObject.map.TilesMap;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 
-
 public class Game extends Canvas implements Runnable {
-
 
     public static final long serialVersionUID = 1L;
 
     private boolean running = false;
     private Thread thread;
-    private Handler gameHandler;
+    private GameHandler gameHandler;
 
     public Game() {
         this.setPreferredSize(new Dimension(Constants.WIDTH, Constants.HEIGHT));
 
-        gameHandler = new Handler();
+        gameHandler = new GameHandler();
         this.addKeyListener(new KeyInput(gameHandler));
         initialize();
     }
 
     public void initialize() {
         gameHandler.getObjects().clear();
-        gameHandler.getObjects().add(new TilesMap(0, 0));
-        gameHandler.getObjects().add(new Player(WIDTH, HEIGHT, 0, 0));
+        gameHandler.addMap(new TilesMap(0, 0, Constants.TEST_MAP_PATH));
+        gameHandler.getObjects().add(new Player(0, 0, 0, 0, gameHandler));
     }
 
     public synchronized void start() {
@@ -52,7 +50,6 @@ public class Game extends Canvas implements Runnable {
         System.exit(1);
     }
 
-    @Override
     public void run() {
         this.requestFocus();
         long lastTime = System.nanoTime();

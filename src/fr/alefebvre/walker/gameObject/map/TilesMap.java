@@ -1,71 +1,71 @@
 package fr.alefebvre.walker.gameObject.map;
 
 import fr.alefebvre.walker.common.Constants;
-import fr.alefebvre.walker.gameObject.GameObject;
+import fr.alefebvre.walker.gameObject.BasicGameObject;
 import fr.alefebvre.walker.gameObject.GameObjectId;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Collections;
 
-public class TilesMap extends GameObject {
+public class TilesMap extends BasicGameObject {
 
     private BufferedImage image;
 
-    public TilesMap(int x, int y) {
+    private TileObject[][] tiles;
+
+    public TilesMap(int x, int y, String mapPath) {
         super(x, y, GameObjectId.BackgroundMap);
 
-        TileObject[][] tiles = getTileObjects();
-        image = renderImage(tiles);
+        this.tiles = getTileObjects(mapPath, Constants.TILE_SIZE);
+        image = renderImage();
     }
 
-    private BufferedImage renderImage(TileObject[][] tiles) {
+    private BufferedImage renderImage() {
         int width = Constants.MAX_MAP_COLUMNS * Constants.TILE_SIZE;
         int height = Constants.MAX_MAP_ROWS * Constants.TILE_SIZE;
         BufferedImage result = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 
         for (int i = 0; i < Constants.MAX_MAP_ROWS; i++) {
             for (int j = 0; j < Constants.MAX_MAP_COLUMNS; j++) {
-                TileObject tile = tiles[i][j];
-                Image img = tile.getImage();
-                int h = i * Constants.TILE_SIZE; //lignes > Height
-                int w = j * Constants.TILE_SIZE;
+                TileObject tile = this.tiles[i][j];
                 Graphics g = result.getGraphics();
-                g.drawImage(img, w, h, Constants.TILE_SIZE, Constants.TILE_SIZE, null);
-                if(Constants.SHOW_TILES_BORDER){
-                    g.setColor(Color.RED);
-                    g.drawRect(w, h, Constants.TILE_SIZE, Constants.TILE_SIZE);
-                }
+                tile.render(g);
             }
         }
         return result;
     }
 
-    private TileObject[][] getTileObjects() {
+    private TileObject[][] getTileObjects(String mapPath, int tileSize) {
         TileObject[][] tiles = new TileObject[Constants.MAX_MAP_ROWS][Constants.MAX_MAP_COLUMNS];
-        ArrayList<ArrayList<TileObject>> mapFromText = TextToMapHelper.GenerateMapFromText(Constants.TEST_MAP_PATH);
-        int imax = mapFromText.size();
-        int jmax = 0;
+        ArrayList<ArrayList<TileObject>> mapFromText = TextToMapHelper.GenerateMapFromText(mapPath, x, y, tileSize);
+        int iMax = mapFromText.size();
+        int jMax = 0;
         for (int i = 0; i < Constants.MAX_MAP_ROWS; i++) {
-            if(i<imax)
-                jmax = mapFromText.get(i).size();
+            if (i < iMax)
+                jMax = mapFromText.get(i).size();
             for (int j = 0; j < Constants.MAX_MAP_COLUMNS; j++) {
-                if (i < imax && j < jmax)
+                if (i < iMax && j < jMax)
                     tiles[i][j] = mapFromText.get(i).get(j);
                 else
-                    tiles[i][j] = new TileObject(TilesEnum.UNKNOWN);
+                    tiles[i][j] = new TileObject(x + i * tileSize, y + j * tileSize, TilesEnum.UNKNOWN);
             }
         }
         return tiles;
     }
 
-    @Override
     public void tick() {
-
     }
 
-    @Override
     public void render(Graphics g) {
-        g.drawImage(this.image, 0, 0, null);
+        g.drawImage(this.image, x, y, null);
+    }
+
+    public ArrayList<TileObject> getTiles() {
+        ArrayList<TileObject> result = new ArrayList<>();
+        for (TileObject[] tilesRow : tiles)
+            Collections.addAll(result, tilesRow);
+        return result;
     }
 }
