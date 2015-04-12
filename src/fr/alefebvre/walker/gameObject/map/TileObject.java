@@ -1,15 +1,20 @@
 package fr.alefebvre.walker.gameObject.map;
 
 import fr.alefebvre.walker.common.Constants;
+import fr.alefebvre.walker.gameObject.GameObject;
+import fr.alefebvre.walker.gameObject.GameObjectId;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class TileObject {
+public class TileObject extends GameObject{
 
     private Image image;
 
-    public TileObject(TilesEnum type) {
+    private int size;
+
+    public TileObject(int x, int y,TilesEnum type) {
+        super(x,y, GameObjectId.MapElement);
         String path;
         switch (type) {
             case GRASS:
@@ -24,9 +29,16 @@ public class TileObject {
         }
         ImageIcon icon = new ImageIcon(path);
         this.image = icon.getImage();
+        this.size = Constants.TILE_SIZE;
     }
 
-    public Image getImage() {
-        return image;
+    public void tick() {}
+
+    public void render(Graphics g) {
+        g.drawImage(image, x, y, size, size, null);
+        if(Constants.SHOW_TILES_BORDER){
+            g.setColor(Color.RED);
+            g.drawRect(x, y, size, size);
+        }
     }
 }
