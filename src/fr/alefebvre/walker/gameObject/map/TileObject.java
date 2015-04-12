@@ -13,18 +13,23 @@ public class TileObject extends GameObject{
 
     private int size;
 
+    private boolean youShallNotPass;
+
     public TileObject(int x, int y,TilesEnum type) {
         super(x,y, GameObjectId.MapElement);
         String path;
         switch (type) {
             case GRASS:
                 path = Constants.TILE_GRASS_IMG;
+                youShallNotPass = false;
                 break;
             case TREE:
                 path = Constants.TILE_TREE_IMG;
+                youShallNotPass = true;
                 break;
             default:
                 path = Constants.TILE_UNKNOWN_IMG;
+                youShallNotPass = true;
                 break;
         }
         ImageIcon icon = new ImageIcon(path);
@@ -37,8 +42,11 @@ public class TileObject extends GameObject{
     public void render(Graphics g) {
         g.drawImage(image, x, y, size, size, null);
         if(Constants.SHOW_TILES_BORDER){
-            g.setColor(Color.RED);
-            g.drawRect(x, y, size, size);
+            if(youShallNotPass)
+                g.setColor(Color.RED);
+            else
+                g.setColor(Color.GREEN);
+            g.drawRect(x, y, size-1, size-1);
         }
     }
 }

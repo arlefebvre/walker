@@ -37,8 +37,11 @@ public abstract class TextToMapHelper {
         return tiles;
     }
 
-    private static TileObject mapTile(String s,int row,int column,int x,int y,int tileSize) {
-        return new TileObject(x+column*tileSize,y+row*tileSize,TextToTilesEnum(s));
+    private static TileObject mapTile(String s,int row,int column,int mapX,int mapY,int tileSize) {
+       int x,y;
+        x = mapX+column*tileSize;
+        y = mapY+row*tileSize;
+        return new TileObject(x,y,TextToTilesEnum(s));
     }
 
     private static TilesEnum TextToTilesEnum(String s) {
