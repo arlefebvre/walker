@@ -25,8 +25,8 @@ public class Game extends Canvas implements Runnable {
 
     public void initialize() {
         gameHandler.getObjects().clear();
-        gameHandler.addMap(new TilesMap(0, 0,Constants.TEST_MAP_PATH));
-        gameHandler.getObjects().add(new Player(0, 0, 0, 0,gameHandler));
+        gameHandler.addMap(new TilesMap(0, 0, Constants.TEST_MAP_PATH));
+        gameHandler.getObjects().add(new Player(0, 0, 0, 0, gameHandler));
     }
 
     public synchronized void start() {

@@ -13,7 +13,7 @@ public class Player extends GameObject {
     private GameHandler handler;
 
     public Player(int x, int y, int velX, int velY, GameHandler handler) {
-        super(x, y,GameObjectId.Player,velX,velY);
+        super(x, y, GameObjectId.Player, velX, velY);
         this.size = Constants.TILE_SIZE;
         this.handler = handler;
     }

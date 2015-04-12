@@ -13,8 +13,8 @@ public class TileObject extends GameObject {
 
     private int size;
 
-    public TileObject(int x, int y,TilesEnum type) {
-        super(x,y, GameObjectId.MapElement);
+    public TileObject(int x, int y, TilesEnum type) {
+        super(x, y, GameObjectId.MapElement);
         String path;
         switch (type) {
             case GRASS:
@@ -35,20 +35,21 @@ public class TileObject extends GameObject {
         this.size = Constants.TILE_SIZE;
     }
 
-    public void tick() {}
+    public void tick() {
+    }
 
     public void render(Graphics g) {
         g.drawImage(image, x, y, size, size, null);
-        if(Constants.SHOW_TILES_BORDER){
-            if(youShallNotPass)
+        if (Constants.SHOW_TILES_BORDER) {
+            if (youShallNotPass)
                 g.setColor(Color.RED);
             else
                 g.setColor(Color.GREEN);
-            g.drawRect(x, y, size-1, size-1);
+            g.drawRect(x, y, size - 1, size - 1);
         }
     }
 
     public Rectangle getBounds() {
-        return new Rectangle(x,y,size,size);
+        return new Rectangle(x, y, size, size);
     }
 }

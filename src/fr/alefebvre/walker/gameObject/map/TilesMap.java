@@ -9,16 +9,16 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class TilesMap extends BasicGameObject{
+public class TilesMap extends BasicGameObject {
 
     private BufferedImage image;
 
     private TileObject[][] tiles;
 
-    public TilesMap(int x, int y,String mapPath) {
+    public TilesMap(int x, int y, String mapPath) {
         super(x, y, GameObjectId.BackgroundMap);
 
-        this.tiles = getTileObjects(mapPath,Constants.TILE_SIZE);
+        this.tiles = getTileObjects(mapPath, Constants.TILE_SIZE);
         image = renderImage();
     }
 
@@ -37,31 +37,32 @@ public class TilesMap extends BasicGameObject{
         return result;
     }
 
-    private TileObject[][] getTileObjects(String mapPath,int tileSize) {
+    private TileObject[][] getTileObjects(String mapPath, int tileSize) {
         TileObject[][] tiles = new TileObject[Constants.MAX_MAP_ROWS][Constants.MAX_MAP_COLUMNS];
-        ArrayList<ArrayList<TileObject>> mapFromText = TextToMapHelper.GenerateMapFromText(mapPath,x,y,tileSize);
+        ArrayList<ArrayList<TileObject>> mapFromText = TextToMapHelper.GenerateMapFromText(mapPath, x, y, tileSize);
         int iMax = mapFromText.size();
         int jMax = 0;
         for (int i = 0; i < Constants.MAX_MAP_ROWS; i++) {
-            if(i<iMax)
+            if (i < iMax)
                 jMax = mapFromText.get(i).size();
             for (int j = 0; j < Constants.MAX_MAP_COLUMNS; j++) {
                 if (i < iMax && j < jMax)
                     tiles[i][j] = mapFromText.get(i).get(j);
                 else
-                    tiles[i][j] = new TileObject(x+i*tileSize,y+j*tileSize,TilesEnum.UNKNOWN);
+                    tiles[i][j] = new TileObject(x + i * tileSize, y + j * tileSize, TilesEnum.UNKNOWN);
             }
         }
         return tiles;
     }
 
-    public void tick() {}
+    public void tick() {
+    }
 
     public void render(Graphics g) {
         g.drawImage(this.image, x, y, null);
     }
 
-    public ArrayList<TileObject> getTiles(){
+    public ArrayList<TileObject> getTiles() {
         ArrayList<TileObject> result = new ArrayList<>();
         for (TileObject[] tilesRow : tiles)
             Collections.addAll(result, tilesRow);

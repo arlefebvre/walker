@@ -25,7 +25,7 @@ public class GameHandler {
         objects.forEach(gameObj -> gameObj.render(g));
     }
 
-    public void addMap(TilesMap newMap){
+    public void addMap(TilesMap newMap) {
         this.map = newMap;
         objects.addAll(newMap.getTiles());
     }
