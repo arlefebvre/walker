@@ -7,8 +7,11 @@ import java.awt.*;
 
 public class Player extends GameObject {
 
+    private int size;
+
     public Player(int x, int y) {
         super(x, y, GameObjectId.Player);
+        this.size = Constants.TILE_SIZE;
     }
 
     public Player(int x, int y, int velX, int velY) {
@@ -21,12 +24,12 @@ public class Player extends GameObject {
         x += velX;
         y += velY;
 
-        x = Helper.Clamp(x, 0, Constants.WIDTH - 30);
-        y = Helper.Clamp(y, 0, Constants.HEIGHT - 30);
+        x = Helper.Clamp(x, 0, Constants.MAX_MAP_COLUMNS*Constants.TILE_SIZE-size);
+        y = Helper.Clamp(y, 0, Constants.MAX_MAP_ROWS*Constants.TILE_SIZE-size);
     }
 
     public void render(Graphics g) {
         ImageIcon icon = new ImageIcon(Constants.PLAYER_IMG);
-        g.drawImage(icon.getImage(),x, y, null);
+        g.drawImage(icon.getImage(),x, y,size,size, null);
     }
 }
