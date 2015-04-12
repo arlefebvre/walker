@@ -7,13 +7,11 @@ import fr.alefebvre.walker.gameObject.GameObjectId;
 import javax.swing.*;
 import java.awt.*;
 
-public class TileObject extends GameObject{
+public class TileObject extends GameObject {
 
     private Image image;
 
     private int size;
-
-    private boolean youShallNotPass;
 
     public TileObject(int x, int y,TilesEnum type) {
         super(x,y, GameObjectId.MapElement);
@@ -48,5 +46,9 @@ public class TileObject extends GameObject{
                 g.setColor(Color.GREEN);
             g.drawRect(x, y, size-1, size-1);
         }
+    }
+
+    public Rectangle getBounds() {
+        return new Rectangle(x,y,size,size);
     }
 }

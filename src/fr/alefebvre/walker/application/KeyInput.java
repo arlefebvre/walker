@@ -1,6 +1,6 @@
 package fr.alefebvre.walker.application;
 
-import fr.alefebvre.walker.gameObject.GameObject;
+import fr.alefebvre.walker.gameObject.BasicGameObject;
 import fr.alefebvre.walker.gameObject.GameObjectId;
 
 import java.awt.event.KeyAdapter;
@@ -8,9 +8,9 @@ import java.awt.event.KeyEvent;
 
 public class KeyInput extends KeyAdapter {
 
-    private Handler handler;
+    private GameHandler handler;
 
-    public KeyInput(Handler gameHandler) {
+    public KeyInput(GameHandler gameHandler) {
         this.handler = gameHandler;
     }
 
@@ -19,7 +19,7 @@ public class KeyInput extends KeyAdapter {
         if (c == KeyEvent.VK_ESCAPE)
             System.exit(0);
 
-        for (GameObject temp : this.handler.getObjects()) {
+        for (BasicGameObject temp : this.handler.getObjects()) {
 
             if (temp.getId() == GameObjectId.Player) {
                 switch (c) {
@@ -44,7 +44,7 @@ public class KeyInput extends KeyAdapter {
 
     public void keyReleased(KeyEvent e) {
         int c = e.getKeyCode();
-        for (GameObject temp : this.handler.getObjects()) {
+        for (BasicGameObject temp : this.handler.getObjects()) {
             if (temp.getId() == GameObjectId.Player) {
                 switch (c) {
                     case KeyEvent.VK_UP:

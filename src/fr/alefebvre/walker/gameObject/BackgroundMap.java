@@ -3,7 +3,7 @@ package fr.alefebvre.walker.gameObject;
 import javax.swing.*;
 import java.awt.*;
 
-public class BackgroundMap extends GameObject {
+public class BackgroundMap extends BasicGameObject {
 
     protected Image image;
 
