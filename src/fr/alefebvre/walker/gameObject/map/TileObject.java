@@ -25,6 +25,10 @@ public class TileObject extends GameObject {
                 path = Constants.TILE_TREE_IMG;
                 youShallNotPass = true;
                 break;
+            case HOUSE:
+                path = Constants.TILE_HOUSE_IMG;
+                youShallNotPass = true;
+                break;
             default:
                 path = Constants.TILE_UNKNOWN_IMG;
                 youShallNotPass = true;

@@ -4,4 +4,5 @@ public enum TilesEnum {
     GRASS,
     TREE,
     UNKNOWN,
+    HOUSE,
 }

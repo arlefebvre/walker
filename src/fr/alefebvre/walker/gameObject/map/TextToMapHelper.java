@@ -50,6 +50,8 @@ public abstract class TextToMapHelper {
                 return TilesEnum.GRASS;
             case "T":
                 return TilesEnum.TREE;
+            case "H":
+                return TilesEnum.HOUSE;
             default:
                 return TilesEnum.UNKNOWN;
         }

@@ -16,6 +16,7 @@ public abstract class Constants {
     public static final String TILE_GRASS_IMG = "resources/images/tile_grass.png";
     public static final String TILE_UNKNOWN_IMG = "resources/images/tile_unknown.png";
     public static final String TILE_TREE_IMG = "resources/images/tile_tree.png";
+    public static final String TILE_HOUSE_IMG = "resources/images/tile_house.png";
 
     //MAPS
     public static final String TEST_MAP_PATH = "resources/maps/map.txt";
