@@ -16,18 +16,16 @@ public class GameWindow extends JFrame {
         this.game = game;
         this.setIconImage(new ImageIcon(Constants.FAVICON).getImage());
         this.add(game);
+        JMenu menuFile = new JMenu("Fichier");
+
         JMenuItem menuItemNew = new JMenuItem("Nouvelle partie");
         menuItemNew.addActionListener(new GameListener(this));
-
-        // TODO A reactiver plus tard.
-        // Il faut régler le pb de ConcurrentModificationException lors du clear a l'initialisation d'une nouvelle partie
-        menuItemNew.setEnabled(false);
+        menuFile.add(menuItemNew);
 
         JMenuItem menuItemQuit = new JMenuItem("Arrêter");
         menuItemQuit.addActionListener(event -> System.exit(0));
-        JMenu menuFile = new JMenu("Fichier");
-        menuFile.add(menuItemNew);
         menuFile.add(menuItemQuit);
+
         JMenuBar menuBar = new JMenuBar();
         menuBar.add(menuFile);
         this.setJMenuBar(menuBar);

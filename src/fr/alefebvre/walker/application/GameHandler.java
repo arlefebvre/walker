@@ -6,14 +6,15 @@ import fr.alefebvre.walker.gameObject.map.TilesMap;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class GameHandler {
 
-    protected ArrayList<GameObject> objects = new ArrayList<>();
+    protected CopyOnWriteArrayList<GameObject> objects = new CopyOnWriteArrayList<>();
 
     protected BasicGameObject map = null;
 
-    public ArrayList<GameObject> getObjects() {
+    public CopyOnWriteArrayList<GameObject> getObjects() {
         return objects;
     }
 
